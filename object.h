@@ -90,8 +90,7 @@ public:
         psi = (psi*180) / PI;
         double theta = atan(sqrt(X*X + Y*Y)/Z);
         theta = (theta * 180) / PI;
-        //if(psi<0) { psi+= 180;}
-        //else {psi-=180;}
+        if(theta<0) { theta += 180 ; }
         Spherical values(rho,theta,psi);
         return values;
     }
@@ -105,6 +104,7 @@ Spherical CylindricaltoSpherical(Cylindrical& A)
     r = sqrt(A.rho*A.rho + A.z*A.z);
     theta = atan(A.rho/A.z);
     theta = (theta*180) / PI;
+    if(theta<0) { theta += 180 ; }
     Spherical value(r,theta,A.psi);
     return value;
 }
