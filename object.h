@@ -2,6 +2,15 @@
 #define PI 3.14159265
 
 
+//methods to convert a cartesian vector then to cylindrical then to spherical
+
+
+
+//methods to convert a point in any coordinate system to any other system
+//spherical to cylindrical method is no correct!!!!!
+
+
+
 class Cylindrical
 {
 public:
@@ -104,7 +113,8 @@ public:
 
 };
 
-//from here
+//Point transformations
+
 Spherical CylindricaltoSpherical(Cylindrical& A)
 {
     double r,theta;
@@ -147,6 +157,8 @@ Vector_ SphericaltoCartesian(Spherical& A)
 }
 
 //vector transformations
+
+
 Vector_ cartesian_cylindrical(Vector_ vec,Cylindrical point)
 {
     //coefficients
