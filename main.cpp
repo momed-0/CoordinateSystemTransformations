@@ -4,11 +4,6 @@
 //scn in spherical to cylinderical
 int main()
 {
-   
-   
-   
-   //code to transform points there is error if we transform from spherical to cylindrical
-   
     /*
    char input,output;
    std::cout<<"Use inputs a b c to enter a Cartesian,Cylindrical Or Spherical Coordinate respectively"<<std::endl;
@@ -108,23 +103,22 @@ int main()
    }
    */
    
-   
-   
-   //code to transform vectors
-   //not correct!!!!
-   
     std::cout<<"Enter the coefficients of cartesian vector"<<std::endl;
     Vector_ vector1;
+    
     std::cin>> vector1.X>>vector1.Y>>vector1.Z;
+    
     std::cout<<"Enter the point where the vector is at"<<std::endl;
     Vector_ point;
-    std::cin>> point.X>>point.Y>>point.Z;
+    std::cin>> point.X>>point.Y>>point.Z;\
+    
     Spherical sphericalpoints = point.tospherical();
     Cylindrical cylindricalpoints = point.tocylindrical();
     //transformed vector
     Vector_ cylin = cartesian_cylindrical(vector1,cylindricalpoints);
     std::cout<<"The Cylindrical system vector is:- "<<std::endl;
     cylin.print();
+    
     Vector_ sph = cartesian_spherical(vector1,sphericalpoints);
     std::cout<<"The Spherical system vector is:- "<<std::endl;
     sph.print();
