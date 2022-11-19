@@ -1,9 +1,11 @@
 #include <iostream>
 #include "object.h"
 
-//scn in spherical to cylinderical
+
 int main()
 {
+    
+    //for point transformation
     /*
    char input,output;
    std::cout<<"Use inputs a b c to enter a Cartesian,Cylindrical Or Spherical Coordinate respectively"<<std::endl;
@@ -103,6 +105,9 @@ int main()
    }
    */
    
+    //taking the input
+    //a vector and a point
+    
     std::cout<<"Enter the coefficients of cartesian vector"<<std::endl;
     Vector_ vector1;
     
@@ -112,9 +117,13 @@ int main()
     Vector_ point;
     std::cin>> point.X>>point.Y>>point.Z;\
     
+     //using the point calculating rho, psi, theta ..etc
+        
     Spherical sphericalpoints = point.tospherical();
-    Cylindrical cylindricalpoints = point.tocylindrical();
-    //transformed vector
+    Cylindrical cylindricalpoints = point.tocylindrical();\
+        
+        
+    //transforming the vector
     Vector_ cylin = cartesian_cylindrical(vector1,cylindricalpoints);
     std::cout<<"The Cylindrical system vector is:- "<<std::endl;
     cylin.print();
