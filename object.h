@@ -75,8 +75,11 @@ public:
     Cylindrical  tocylindrical()
     {
         double rho = sqrt(X*X + Y*Y);
-        double psi = atan(Y/X);
-        psi = (psi * 180) / PI;
+        double psi;
+       
+            psi = atan(Y/X) ;
+            psi =  (psi * 180) / PI ;
+        
         //if(psi<0) { psi+= 180;}
         //else { psi-=180;}
         Cylindrical values(rho,psi,Z);
@@ -86,10 +89,14 @@ public:
     Spherical  tospherical()
     {
         double rho = sqrt(X*X + Y*Y + Z*Z);
-        double psi = atan(Y/X);
-        psi = (psi*180) / PI;
-        double theta = atan(sqrt(X*X + Y*Y)/Z);
-        theta = (theta * 180) / PI;
+        double psi;
+
+        
+           psi =  atan(Y/X) ;
+            psi =(psi * 180) / PI;
+        
+        double theta =  atan(sqrt(X*X + Y*Y)/Z);
+        theta = (theta * 180) / PI ;
         if(theta<0) { theta += 180 ; }
         Spherical values(rho,theta,psi);
         return values;
@@ -139,18 +146,15 @@ Vector_ SphericaltoCartesian(Spherical& A)
     return value;
 }
 
-
-
-//for vector transformation
-//not correct!!
-
-
 //vector transformations
 Vector_ cartesian_cylindrical(Vector_ vec,Cylindrical point)
 {
     //coefficients
     Vector_ final;
+
+   
     double angle = point.psi * (PI/180);
+    
     final.X = (vec.X * cos(angle) ) + (vec.Y * sin(angle)) ;
     final.Y = (-1*vec.X*sin(angle)) + ((vec.Y) * cos(angle));
     final.Z = vec.Z;
@@ -160,8 +164,8 @@ Vector_ cartesian_cylindrical(Vector_ vec,Cylindrical point)
 Vector_ cartesian_spherical(Vector_ vec,Spherical point)
 {
     Vector_ final;
-    double anglepsi = point.psi * (PI*180) ;
-    double angletheta = point.theta * (PI*180);
+    double anglepsi = point.psi * (PI/180) ;
+    double angletheta = point.theta * (PI/180);
     final.X = (vec.X*sin(angletheta)*cos(anglepsi)) + (vec.Y*sin(angletheta)*sin(anglepsi)) + (vec.Z * cos(angletheta));
     final.Y = (vec.X*cos(angletheta)*cos(anglepsi)) + (vec.Y*cos(angletheta)*sin(anglepsi)) + (vec.Z * sin(angletheta) * -1);
     final.Z = (-1*vec.X*sin(anglepsi)) + ((vec.Y) * cos(anglepsi));
